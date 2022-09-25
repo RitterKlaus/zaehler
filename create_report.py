@@ -1,6 +1,8 @@
 from datetime import datetime
 import pandas as pd
 import matplotlib.pyplot as plt
+import ftplib
+import zaehlerconfig
 
 # Hilfreiche Befehle
 # print(df.to_string())
@@ -11,8 +13,7 @@ import matplotlib.pyplot as plt
 
 ############################# Daten vorbereiten ###############################
 # CSV-Datei in Pandas einlesen, Spaltentitel definieren
-df = pd.read_csv('zaehler-30.csv', sep=';', names=['Impuls', 'Nummer', 'Label', 'Zeitpunkt'])
-#df = pd.read_csv('zaehler-20220908.csv', sep=';', names=['Impuls', 'Nummer', 'Label', 'Zeitpunkt'])#
+df = pd.read_csv('zaehler.csv', sep=';', names=['Impuls', 'Nummer', 'Label', 'Zeitpunkt'])
 
 # unnötige Spalten löschen
 df = df.drop(columns=['Impuls', 'Nummer', 'Label'])
@@ -23,17 +24,17 @@ df['Datum'] = pd.to_datetime(df['Zeitpunkt'], format='%Y-%m-%d')
 
 ############################# Summe nach Datum (Tag) ###############################
 # Summe pro Tag bilden (gruppieren)
-##df_gruppiert_datum = df.groupby(pd.Grouper(key='Datum',freq='5D')).agg(summe=('Datum', 'count'))
+df_gruppiert_datum = df.groupby(pd.Grouper(key='Datum',freq='5D')).agg(summe=('Datum', 'count'))
 
 # Diagramm erstellen
-##gas_nach_datum = df_gruppiert_datum.plot(kind = 'bar', xlabel = 'Datum', ylabel = 'Zählimpulse', legend = False)
+gas_nach_datum = df_gruppiert_datum.plot(kind = 'bar', xlabel = 'Datum', ylabel = 'Zählimpulse', legend = False)
 
 # Beschriftung der x-Achse in ein schönes Format bringen
-##x_labels = df_gruppiert_datum.index.strftime('%d.%m.')
-##gas_nach_datum.set_xticklabels(x_labels)
+x_labels = df_gruppiert_datum.index.strftime('%d.%m.')
+gas_nach_datum.set_xticklabels(x_labels)
 
 # Ergebnis als Bild speichern
-##plt.savefig('diagramm_gas_pro_tag.png')
+plt.savefig('web/img/diagramm_gas_pro_tag.png')
 
 ############################# Summe nach Tageszeit ###############################
 # Summe pro Tag bilden (gruppieren)
@@ -49,4 +50,14 @@ print(df_gruppiert_tageszeit.dtypes)
 gas_nach_tageszeit = df_gruppiert_tageszeit.plot(kind = 'bar', xlabel = 'Stunde', ylabel = 'Zählimpulse', legend = False)
 
 # Ergebnis als Bild speichern
-plt.savefig('diagramm_gas_pro_stunde.png')
+plt.savefig('web/img/diagramm_gas_pro_stunde.png')
+
+############################# Dateien hochladen ###############################
+session = ftplib.FTP(zaehlerconfig.ftp_adress, zaehlerconfig.ftp_username, zaehlerconfig.ftp_password)
+file = open('web/img/diagramm_gas_pro_tag.png','rb')                  
+session.storbinary('STOR img/diagramm_gas_pro_tag.png', file)   
+file.close()
+file = open('web/img/diagramm_gas_pro_stunde.png','rb')                  
+session.storbinary('STOR img/diagramm_gas_pro_stunde.png', file)   
+file.close()                                  
+session.quit()
