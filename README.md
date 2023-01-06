@@ -5,6 +5,9 @@ Diese Software besteht aus drei Komponenten:
 * einem Cron-Job, der jede Nacht das Statistik-Skript startet
 * Dateien für eine Website, auf der Statistiken dargestellt werden sollen
 
+Das Ergebnis sind Diagramme wie dieses:
+![Gasverbrauch der letzten 30 Tage](web/img/diagramm_gas_pro_tag_letzte_30.png "Gasverbrauch der letzten 30 Tage")
+
 # Abläufe
 1. Ein Raspberry Pi protokolliert jede Umdrehung des Gaszählers durch den Magnetkontakt mit sekundengenauem Zeitstempel.
 1. Jede Nacht werden aus den gesammelten Daten zwei Statistiken erzeugt: Gasverbrauch pro Tag und Gasverbrauch pro Stunde des Tages.
