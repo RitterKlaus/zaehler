@@ -2,10 +2,13 @@
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Statistiken zum Gaszähler</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="icon" type="image/png" href="tile.png" sizes="251x251">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="css/normalize.min.css">
@@ -20,7 +23,7 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">Statistik zum Gaszähler</h1>
+                <h1 class="title">Statistiken zum Gaszähler</h1>
             </header>
         </div>
 
@@ -28,12 +31,20 @@
             <div class="main wrapper clearfix">
 
                 <article>
-                    <div>Gas nach Tag</div>
-                    <img src="img/diagramm_gas_pro_tag.png" alt="Gas nach Tag">
-                    <div>Gas nach Stunde</div>
-                    <img src="img/diagramm_gas_pro_stunde.png" alt="Gas nach Stunde">
+                    <p><b>Erklärung:</b> 1 Zählimpuls entspricht 0,01 m&sup3;. Laut Gasanbieter entspricht 1 m&sup3; dann 10,757 kWh (Stand: 2022). Ein Zählimpuls entspricht also 0,10757 kWh.</p>
+                    <h2>Gas nach Datum (letzte 30 Tage):</h2>
+                    <img src="img/diagramm_gas_pro_tag_letzte_30.png" alt="Gas nach Datum (letzte 30 Tage)">
+                    <hr>
+                    <h2>Gas nach Stunde (gestern):</h2>
+                    <img src="img/diagramm_gas_pro_stunde_gestern.png" alt="Gas nach Stunde (gestern)">
+                    <hr>
+                    <h2>Gas nach Datum (gesamter Zeitraum):</h2>
+                    <img src="img/diagramm_gas_pro_tag.png" alt="Gas nach Datum (gesamter Zeitraum)">
+                    <hr>
+                    <h2>Gas nach Stunde (gesamter Zeitraum):</h2>
+                    <img src="img/diagramm_gas_pro_stunde.png" alt="Gas nach Stunde (gesamter Zeitraum)">
+                    <hr>
                 </article>
-
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->

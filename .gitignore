@@ -1,4 +1,2 @@
-zaehler.csv
-zaehler-20220908.csv
-send_to_grafite.py
 __pycache__/*
+private/*
