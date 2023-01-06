@@ -36,7 +36,7 @@ Das Ergebnis sind Diagramme wie dieses:
 1. scp create_report.py pi@ IP-Adresse deines Raspberry Pi :/home/pi/dev/
 1. Erstellen der Crontab:
 1. crontab -e
-1. # m h  dom mon dow   command
+1. _ m h  dom mon dow   command
 1. 0 1 * * * cd /home/pi/dev && /usr/bin/python create_report.py >> cronlog.txt 2>&1
 1. nohup python interrupt.py &
 
