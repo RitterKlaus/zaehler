@@ -23,7 +23,8 @@ Das Ergebnis sind Diagramme wie dieses:
 * Konfigdaten (u.a. FTP-Passwort) in create_report.py eintragen
 * cron-Job für Start von create_report.py einrichten
 
-# Verkabelung der Pins auf dem Raspberry Pi 3 B (auf eigene Gefahr!)
+# Verkabelung der Pins auf dem Raspberry Pi 3 B
+* Auf eigene Gefahr! Bitte vorher Doku des eigenen Raspberry durchlesen!
 * PIN 17 (+3,3 V)
 * PIN 18 (GPIO 24)
 
