@@ -43,7 +43,7 @@ Das Ergebnis sind Diagramme wie dieses:
 # Kopieren der Zählerdatei vom Raspberry Pi auf den lokalen Rechner (z.B. als Backup)
 scp pi@ IP-Adresse deines Raspberry Pi :/home/pi/dev/zaehler.csv zaehler-lokal.csv
 
-# Knwon issues:
+# Known issues:
 1. Gas nach Stunde Format y-Achse
 1. Gas nach Datum gesamt - besser letzte 12 Monate
 1. Gas nach Stunde gesamt - besser letzte 12 Monate
